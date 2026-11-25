@@ -158,14 +158,14 @@ def quote(kicker_t, strong, rest, tail):
     return p
 
 
-def steps(kicker_t, items, mark_first=True):
+def steps(kicker_t, items, mark_first=True, start=1):
     def p(img, rnd):
         d = ImageDraw.Draw(img)
         kicker(d, kicker_t)
         y = 240
         gap = 320 if len(items) <= 3 else 245
         for i, (t, s) in enumerate(items, 1):
-            d.text((M, y - 20), str(i), font=SERIF_B(150 if len(items) <= 3 else 120), fill=MARK)
+            d.text((M, y - 20), str(i + start - 1), font=SERIF_B(150 if len(items) <= 3 else 120), fill=MARK)
             yy = text(d, (M + 130, y + 10), t, SERIF_B(58), width=W - 2 * M - 130, lh=1.08)
             text(d, (M + 130, yy + 10), s, SANS(32), fill=GREY, width=W - 2 * M - 130, lh=1.35)
             if i == 1 and mark_first:
